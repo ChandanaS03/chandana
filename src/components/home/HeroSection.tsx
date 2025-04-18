@@ -1,6 +1,5 @@
-
 import { ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link as ScrollLink } from 'react-scroll';
 
 const HeroSection = () => {
   return (
@@ -19,15 +18,31 @@ const HeroSection = () => {
             that merge creativity with innovation.
           </p>
           <div className="flex flex-wrap gap-4 pt-4">
-            <Link to="#projects" className="button-primary">
+            <ScrollLink 
+              to="projects" 
+              smooth={true} 
+              duration={500} 
+              className="button-primary"
+              offset={-70} // Adjust based on your header height
+            >
               View my work
-            </Link>
-            <Link to="#contact" className="button-secondary flex items-center gap-2">
+            </ScrollLink>
+            
+            <ScrollLink 
+              to="contact" 
+              smooth={true} 
+              duration={500} 
+              className="button-secondary flex items-center gap-2"
+              offset={-70}
+            >
               Contact me <ArrowRight size={16} />
-            </Link>
-
+            </ScrollLink>
+          </div>
+          
+          {/* Move the Spline viewer outside the buttons div */}
+          <div className="mt-8">
             <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js"></script>
-<spline-viewer url="https://prod.spline.design/uxaEoIyhZ9ld4uci/scene.splinecode"></spline-viewer>
+            <spline-viewer url="https://prod.spline.design/uxaEoIyhZ9ld4uci/scene.splinecode"></spline-viewer>
           </div>
         </div>
       </div>
