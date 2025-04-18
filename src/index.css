@@ -1,0 +1,142 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap');
+
+@layer base {
+  :root {
+    --background: 225 31% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 224 30% 15%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 224 30% 15%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 171 100% 69%;
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 226 70% 55%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 215 27% 16%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 171 100% 69%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 215 27% 16%;
+    --input: 215 27% 16%;
+    --ring: 171 100% 69%;
+
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .font-mono {
+    font-family: 'Roboto Mono', monospace;
+  }
+}
+
+@layer components {
+  .heading-gradient {
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+  }
+  
+  .nav-item {
+    @apply relative px-2 py-1 text-sm font-medium text-foreground/70 transition-all duration-200 hover:text-primary;
+  }
+
+  .nav-item::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300;
+  }
+
+  .nav-item:hover::after {
+    @apply w-full;
+  }
+
+  .nav-item-active {
+    @apply text-primary;
+  }
+
+  .nav-item-active::after {
+    @apply w-full;
+  }
+  
+  .section-heading {
+    @apply text-2xl md:text-3xl font-bold mb-8 flex items-center gap-2;
+  }
+  
+  .section-heading::after {
+    content: '';
+    @apply h-[1px] bg-primary/30 flex-grow ml-4;
+  }
+  
+  .section-container {
+    @apply max-w-6xl mx-auto px-4 py-20;
+  }
+
+  .button-primary {
+    @apply px-5 py-2 rounded-md bg-transparent border border-primary text-primary hover:bg-primary/10 transition-all duration-300 font-medium text-sm;
+  }
+  
+  .button-secondary {
+    @apply px-5 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 font-medium text-sm;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out forwards;
+  }
+  
+  .animate-slide-in-right {
+    animation: slideInRight 0.5s ease-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideUp {
+    from { 
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideInRight {
+    from { 
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
